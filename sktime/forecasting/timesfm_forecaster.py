@@ -24,6 +24,11 @@ class TimesFMForecaster(_BaseGlobalForecaster):
     from the source package, allowing users to leverage either their own
     environment or the latest updates from the source package `timesfm`.
 
+    Note: An upcoming extension, **TimesFM-ICF** (In-Context Fine-tuning),
+    is planned for integration. It allows the model to achieve fine-tuned
+    performance while remaining zero-shot by providing related in-context
+    time-series examples as part of the input "prompt".
+
     The class offers two flags for handling dependencies and source package behavior:
 
     - ``use_source_package``: Determines the source of the package code:
