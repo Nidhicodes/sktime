@@ -32,6 +32,8 @@ class ConvTimeNet:
             dropout: float,
             d_ff: int,
             dw_ks: list[int],
+            fc_dropout: float = 0.0,
+            patch_dropout: float = 0.1,
             device: str = "cpu",
         ):
             super().__init__()
@@ -43,6 +45,7 @@ class ConvTimeNet:
                 stride=patch_stride,
                 in_feats=enc_in,
                 out_feats=d_model,
+                dropout=patch_dropout,
             )
 
             # 🧠 ConvTimeNet Backbone
@@ -63,7 +66,7 @@ class ConvTimeNet:
                 dropout=dropout,
                 act="gelu",
                 pooling_tp="max",
-                fc_dropout=0.0,
+                fc_dropout=fc_dropout,
                 enable_res_param=enable_res_param,
                 dw_ks=dw_ks,
                 norm="batch",
@@ -98,6 +101,8 @@ class ConvTimeNet:
         dropout: float,
         d_ff: int,
         dw_ks: list[int],
+        fc_dropout: float = 0.0,
+        patch_dropout: float = 0.1,
         device: str = "cpu",
     ):
         # Store params for later use
@@ -111,6 +116,8 @@ class ConvTimeNet:
             dropout=dropout,
             d_ff=d_ff,
             dw_ks=dw_ks,
+            fc_dropout=fc_dropout,
+            patch_dropout=patch_dropout,
             device=device,
         )
         self.model = None
